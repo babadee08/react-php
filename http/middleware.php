@@ -1,5 +1,9 @@
 <?php
 
+use FriendsOfReact\Http\Middleware\Psr15Adapter\GroupedPSR15Middleware;
+use FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware;
+use Middlewares\ClientIp;
+use Middlewares\Redirect;
 use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\Factory;
 use React\Http\Response;
@@ -28,6 +32,11 @@ $hello = function (ServerRequestInterface $request) {
 };
 
 $server = new \React\Http\Server([
+    // new PSR15Middleware($loop, Redirect::class, [['/secret' => '/']]),
+    // new PSR15Middleware($loop, ClientIp::class),
+    (new GroupedPSR15Middleware($loop))
+        ->withMiddleware(ClientIp::class)
+        ->withMiddleware(Redirect::class, [['/secret' => '/']]),
     new Logging(),
     new CustomHeader('X-Custom', 'foo'),
     $redirect,
