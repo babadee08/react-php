@@ -9,6 +9,7 @@
         "for/http-middleware-psr15-adapter": "^1.0",
         "middlewares/client-ip": "^2.0",
         "middlewares/redirect": "^2.0",
-        "guzzlehttp/psr7": "^1.6"
+        "guzzlehttp/psr7": "^1.6",
+        "nikic/fast-route": "^1.3"
     }
 }

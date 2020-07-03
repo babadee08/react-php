@@ -1,0 +1,20 @@
+GET 127.0.0.1:8080/tasks
+
+###
+
+GET 127.0.0.1:8080/tasks/1
+
+###
+
+POST 127.0.0.1:8080/tasks
+Content-Type: application/x-www-form-urlencoded
+
+task=new task
+
+###
+
+POST 127.0.0.1:8080/tasks
+
+###
+
+GET 127.0.0.1:8080/about-us
